@@ -4,7 +4,8 @@
 	<title>Conversa - Teste</title>
 	<style>
 		body	{
-			color: blue; font-weight: :bold font-size: 18px; background: #green; background-image: url(""); background-repeat: repeat-y;
+			color: blue; font-weight: :bold font-size: 18px; background: #ee4; 
+			background-image: url("IMG_9456.png"); background-repeat: repeat-y;
 		}
 		span{
 			color: #711;
@@ -74,7 +75,28 @@ function output(input) {
 		var produto = input + "=" + eval(input);
 	}catch(e){
 		var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, "")
+		text = text.replace(/ a /g, " ").replace(/i feel /g, "").replace(/whats/g, "O que e").replace(/porfavor /g, "").replace(/ porfavor/g, "");
+	if (compare(trigger, reply, text)) {
+		var produto = compare(trigger, reply, text);
+	} else {
+		var produto = alternative[Math.floor(Math.random()*alternative.length)];
+		}
 	}
+	document.getElementById("chatbot").innerHTML = produto;
+	speak(produto);
+	document.getElementById("input").value = "";
+}
+function spe(string) {
+	// body...
+	var utterance = new SpeechSynthesisutterance();
+	utterance.voice = speechSynthsis.getVoices().filter(function(voice) {return voice.name == "Eliseu";
+	}[0]);
+	utterance.text = string;
+	utterance.lang = "pt-PT";
+	utterance.volume = 1;
+	utterance.rate = 1;
+	utterance.pitch = 2;
+	speechSynthesis.speak(utterance);
 }
 </script>
 	

@@ -14,6 +14,10 @@
 		::-webkit-input-placeholder {
 			color: #711;
 		}
+		#main {
+			position: fixed; top: 40%; right: 60px; width: 400px;
+			border: 0px solid #421; padding: 40px;
+		}
 		#main div {
 			margin: 10px;
 		}
@@ -29,37 +33,38 @@
 		<div><input id="input" type="text" placeholder="Diga alguma coisa..." autocomplete="off"></div>
 	</div>
 
-	<script type="text/javascript">var trigger = [
-["oi", "ei", "olá"],
-["como você está", "como é a vida", "como estão as coisas"],
-["o que você está fazendo", "o que está acontecendo"],
-["Quantos anos você tem"],
-["quem é você", "você é humano", "você está bot", "você é humano ou bot"?]
-["quem te criou", "quem te fez"],
-["seu nome, por favor", "seu nome", "eu posso saber seu nome", "qual é o seu nome"],
-["eu te amo"],
-["feliz", "bom"],
-["mau", "normal", "cansado"],
-["ajude-me", "diga-me história", "conta-me uma piada"],
-["ah", "sim", "ok", "ok", "legal", "obrigado", "obrigado"],
-["Adeus", "Adeus", "Ja vou", "vejo voce mais tarde"]
-];
+	<script type="text/javascript">
+		var trigger = [
+			["oi", "ei", "olá"],
+			["como você está", "como é a vida", "como estão as coisas"],
+			["o que você está fazendo", "o que está acontecendo"],
+			["Quantos anos você tem"],
+			["quem é você", "você é humano", "você está bot", "você é humano ou bot"?]
+			["quem te criou", "quem te fez"],
+			["seu nome, por favor", "seu nome", "eu posso saber seu nome", "qual é o seu nome"],
+			["eu te amo"],
+			["feliz", "bom"],
+			["mau", "normal", "cansado"],
+			["ajude-me", "diga-me história", "conta-me uma piada"],
+			["ah", "sim", "ok", "ok", "legal", "obrigado", "obrigado"],
+			["Adeus", "Adeus", "Ja vou", "vejo voce mais tarde"]
+			];
 
 	var reply = [
-["Olá", "Ei", "Olá"],
-["Bem", "Muito bem", "Fantastico"],
-["Nada demais", "Sobre a ir dormir", "Você pode convidar?", "Eu não sei realmente"],
-["Tenho 1 dia de idade"],
-["Eu sou apenas um Robbo", "Eu sou um Robbo. O que você está fazer?"]
-["Kani Veri", "Meu Deus"],
-["Eu sou sem nome", "Eu não tenho um nome"],
-["Eu também te amo", "Eu também"],
-["Você já se sentiu mal?", "Fico feliz em ouvi-lo"],
-["Porque?", "Porque? Voce nao deveria!", "Tente ver TV"],
-["Eu vou", "E quanto?"]
-["Conta-me uma história", "Conta-me uma piada", "Fale-me sobre você", "Você é bem-vindo"],
-["Tchau", "Adeu", "Nos vemos mais tarde"]
-];
+			["Olá", "Ei", "Olá"],
+			["Bem", "Muito bem", "Fantastico"],
+			["Nada demais", "Sobre a ir dormir", "Você pode convidar?", "Eu não sei realmente"],
+			["Tenho 1 dia de idade"],
+			["Eu sou apenas um Robbo", "Eu sou um Robbo. O que você está fazer?"]
+			["Kani Veri", "Meu Deus"],
+			["Eu sou sem nome", "Eu não tenho um nome"],
+			["Eu também te amo", "Eu também"],
+			["Você já se sentiu mal?", "Fico feliz em ouvi-lo"],
+			["Porque?", "Porque? Voce nao deveria!", "Tente ver TV"],
+			["Eu vou", "E quanto?"]
+			["Conta-me uma história", "Conta-me uma piada", "Fale-me sobre você", "Você é bem-vindo"],
+			["Tchau", "Adeu", "Nos vemos mais tarde"]
+			];
 
 var alternative = ["Hahahaha...", "Awena...pfula matilho"];
 document.querySelector("#input").addEventListener("keypress", function (e) {
@@ -99,7 +104,5 @@ function spe(string) {
 	speechSynthesis.speak(utterance);
 }
 </script>
-	
-
 </body>
 </html>

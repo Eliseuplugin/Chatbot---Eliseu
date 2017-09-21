@@ -35,72 +35,82 @@
 
 	<script type="text/javascript">
 		var trigger = [
-			["oi", "ei", "olá"],
-			["como você está", "como é a vida", "como estão as coisas"],
-			["o que você está fazendo", "o que está acontecendo"],
-			["Quantos anos você tem"],
-			["quem é você", "você é humano", "você está bot", "você é humano ou bot"],
+			["oi", "ei", "ola"],
+			["como voce esta", "como e a vida", "como estao as coisas"],
+			["o que voce esta fazendo", "o que esta acontecendo"],
+			["Quantos anos voce tem"],
+			["quem e voce", "voce e cristao", "voce esta sentado", "voce e humano ou robo"],
 			["quem te criou", "quem te fez"],
-			["seu nome, por favor", "seu nome", "eu posso saber seu nome", "qual é o seu nome"],
+			["seu nome, por favor", "seu nome", "eu posso saber seu nome", "qual e o seu nome"],
 			["eu te amo"],
 			["feliz", "bom"],
 			["mau", "normal", "cansado"],
-			["ajude-me", "diga-me história", "conta-me uma piada"],
+			["ajude me", "fala me de uma historia", "conta-me uma piada"],
 			["ah", "sim", "ok", "ok", "legal", "obrigado", "obrigado"],
 			["Adeus", "Adeus", "Ja vou", "vejo voce mais tarde"]
 			];
 
 	var reply = [
-			["Olá", "Ei", "Olá"],
+			["Ola", "Ei", "Ola"],
 			["Bem", "Muito bem", "Fantastico"],
-			["Nada demais", "Sobre a ir dormir", "Você pode convidar?", "Eu não sei realmente"],
+			["Nada demais", "Sobre a ir dormir", "Voce pode convidar", "Eu nao sei realmente"],
 			["Tenho 1 dia de idade"],
-			["Eu sou apenas um Robbo", "Eu sou um Robbo. O que você está fazer?"],
-			["Kani Veri", "Meu Deus"],
-			["Eu sou sem nome", "Eu não tenho um nome"],
-			["Eu também te amo", "Eu também"],
-			["Você já se sentiu mal?", "Fico feliz em ouvi-lo"],
+			["Eu sou apenas um Robbo", "Eu sou um Robbo. O que voce esta fazer?"],
+			["Eliseu Botelho", "Meu Deus"],
+			["Eu sou sem nome", "Eu nao tenho um nome"],
+			["Eu tambem te amo", "Eu tambem"],
+			["Voce ja se sentiu mal?", "Fico feliz em ouvi-lo"],
 			["Porque?", "Porque? Voce nao deveria!", "Tente ver TV"],
 			["Eu vou", "E quanto?"],
-			["Conta-me uma história", "Conta-me uma piada", "Fale-me sobre você", "Você é bem-vindo"],
+			["Conta-me uma historia", "Conta-me uma piada", "Fale-me sobre voce", "Voce e bem-vindo"],
 			["Tchau", "Adeu", "Nos vemos mais tarde"]
 			];
 
-var alternative = ["Hahahaha...", "Awena...pfula matilho"];
-document.querySelector("#input").addEventListener("keypress", function (e) {
+var alternative = ["Haha...", "Eh..."];
+document.querySelector("#input").addEventListener("keypress", function(e){
 	var key = e.which || e.keyCode;
-	if(key === 13){
+	if(key === 13){ //Enter button
 		var input = document.getElementById("input").value;
 		document.getElementById("user").innerHTML = input;
 		output(input);
 	}
 });
-function output(input) {
+function output(input){
 	try{
-		var produto = input + "=" + eval(input);
-	}catch(e){
-		var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, "")
-		text = text.replace(/ a /g, " ").replace(/i feel /g, "").replace(/whats/g, "O que e").replace(/porfavor /g, "").replace(/ porfavor/g, "");
-	if (compare(trigger, reply, text)) {
-		var produto = compare(trigger, reply, text);
-	} else {
-		var produto = alternative[Math.floor(Math.random()*alternative.length)];
+		var product = input + "=" + eval(input);
+	} catch(e){
+		var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, ""); //remove all chars except words, space and 
+		text = text.replace(/ a /g, " ").replace(/i feel /g, "").replace(/whats/g, "what is").replace(/please /g, "").replace(/ please/g, "");
+		if(compare(trigger, reply, text)){
+			var product = compare(trigger, reply, text);
+		} else {
+			var product = alternative[Math.floor(Math.random()*alternative.length)];
 		}
 	}
-	document.getElementById("chatbot").innerHTML = produto;
-	speak(produto);
-	document.getElementById("input").value = "";
+	document.getElementById("chatbot").innerHTML = product;
+	speak(product);
+	document.getElementById("input").value = ""; //clear input value
 }
-function spe(string) {
-	// body...
-	var utterance = new SpeechSynthesisutterance();
-	utterance.voice = speechSynthsis.getVoices().filter(function(voice) {return voice.name == "Eliseu";
-	}[0]);
+function compare(arr, array, string){
+	var item;
+	for(var x=0; x<arr.length; x++){
+		for(var y=0; y<array.length; y++){
+			if(arr[x][y] == string){
+				items = array[x];
+				item =  items[Math.floor(Math.random()*items.length)];
+			}
+		}
+	}
+	return item;
+}
+function speak(string){
+	var utterance = new SpeechSynthesisUtterance();
+	utterance.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == "Eliseu";})[0];
 	utterance.text = string;
 	utterance.lang = "pt-PT";
-	utterance.volume = 1;
+	utterance.volume = 1; //0-1 interval
 	utterance.rate = 1;
-	utterance.pitch = 2;
+	utterance.pitch = 2; //0-2 interval
 	speechSynthesis.speak(utterance);
 }
 </script>

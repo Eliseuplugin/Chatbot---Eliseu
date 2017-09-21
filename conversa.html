@@ -61,7 +61,21 @@
 ];
 
 var alternative = ["Hahahaha...", "Awena...pfula matilho"];
-document.querySelector
+document.querySelector("#input").addEventListener("keypress", function (e) {
+	var key = e.which || e.keyCode;
+	if(key === 13){
+		var input = document.getElementById("input").value;
+		document.getElementById("user").innerHTML = input;
+		output(input);
+	}
+});
+function output(input) {
+	try{
+		var produto = input + "=" + eval(input);
+	}catch(e){
+		var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, "")
+	}
+}
 </script>
 	
 
